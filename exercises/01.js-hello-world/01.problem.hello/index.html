@@ -17,3 +17,17 @@
 
 <!-- 🐨 Append the div to the root div using `append` -->
 <!--	 💰 document.getElementById('root') -->
+<html>
+	<body>
+		<div id="root"></div>
+		<script type="module">
+			const rootElement = document.getElementById('root')
+			const element = document.createElement('div')
+
+			element.className = 'container'
+			element.textContent = 'Hello World 2'
+
+			rootElement.append(element)
+		</script>
+	</body>
+</html>
