@@ -3,10 +3,9 @@
 
 	<!-- 🐨 add React and ReactDOM on the page.
 			 💰 Here are script tags that'll do the job:
+	-->
 	<script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
 	<script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
-	-->
-
 	<script type="module">
 		const rootElement = document.getElementById('root')
 
@@ -14,13 +13,32 @@
 		// 💣 So go ahead and delete this implementation (or comment it out for now)
 		// These three lines are similar to React.createElement
 		// 📜 https://react.dev/reference/react/createElement
+
+		/*
 		const element = document.createElement('div')
 		element.className = 'container' // 💰 in React, this is also called the "className" prop
 		element.textContent = 'Hello World' // 💰 in React, this is the "children" prop
 		// This is similar to ReactDOM.createRoot().render()
 		rootElement.append(element)
+		      */
 
 		// 🐨 Please replace all the DOM-related code above with React API calls
 		// 💰 The example in the markdown file should be a good hint for you.
+		const element = React.createElement('div', {
+			className: 'container',
+			children: 'Hello Worldooo',
+		})
+		console.log(element)
+		ReactDOM.createRoot(rootElement).render(element) //nota: or ReactDOM.render(element, rootElement)
 	</script>
 </body>
+
+<!--Notita:
+Note that creating this object does not render the Greeting component or 
+create any DOM elements.
+A React element is more like a description—an instruction for React to later 
+render the Greeting component. 
+By returning this object from your App component, you tell React what to do 
+next.
+Creating elements is extremely cheap so you don’t need to try to optimize or avoid it.
+-->

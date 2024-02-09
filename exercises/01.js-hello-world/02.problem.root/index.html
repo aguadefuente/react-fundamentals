@@ -1,20 +1,21 @@
 <html>
 	<body>
 		<!-- 💣 delete this element (we'll make it with JS instead) -->
-		<div id="root"></div>
+		<!-- <div id="root"></div> -->
 		<script type="module">
 			// 🐨 rather than getting the element from the DOM created by the HTML
 			// create the root element like you do the hello world element
-			const rootElement = document.getElementById('root')
 			// 🐨 you can even add the id to the root element if you like
+			const rootElement = document.createElement('div')
+			rootElement.id = 'root'
 
 			const element = document.createElement('div')
-
 			element.className = 'container'
-			element.textContent = 'Hello World'
+			element.textContent = 'Hello World 2'
 
 			rootElement.append(element)
 			// 🐨 add the rootElement to the document.body
+			document.body.append(rootElement)
 		</script>
 	</body>
 </html>
