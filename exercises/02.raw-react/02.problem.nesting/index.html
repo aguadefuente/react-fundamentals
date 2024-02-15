@@ -13,7 +13,11 @@
 			// 🦉 also play around with using the third argument to createElement
 			// for children instead of the children prop...
 			// https://react.dev/reference/react/createElement
-			children: 'Hello World',
+			children: [
+				React.createElement('span', null, 'Hello'),
+				' ',
+				React.createElement('span', null, 'nested Wold!'),
+			],
 		})
 		ReactDOM.createRoot(rootElement).render(element)
 	</script>
