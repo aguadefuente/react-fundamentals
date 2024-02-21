@@ -7,8 +7,9 @@
 		const children = 'Hello Spread World'
 		const className = 'container'
 		const props = { children, className }
-		const element = <div {...props} />
 		//const element = <div className={className}>{children}</div>
+		//const element = <div className={props.className}>{props.children}</div>
+		const element = <div {...props} />
 		ReactDOM.createRoot(document.getElementById('root')).render(element)
 	</script>
 </body>

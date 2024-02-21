@@ -6,15 +6,17 @@
 		const rootElement = document.getElementById('root')
 		const element = React.createElement('div', {
 			className: 'container',
-			// 🐨 turn this children prop into an array with three elements:
+			// 🐨 turn this children prop into an ARRAY with three elements:
 			// 1: a span that has the text "Hello"
 			// 2: a string with the text " "
 			// 3: a span that has the text "World"
+
 			// 🦉 also play around with using the third argument to createElement
 			// for children instead of the children prop...
 			// https://react.dev/reference/react/createElement
 			children: [
 				React.createElement('span', null, 'Hello'),
+				//o ("span", {}, "Hello")
 				' ',
 				React.createElement('span', null, 'nested Wold!'),
 			],
@@ -22,3 +24,74 @@
 		ReactDOM.createRoot(rootElement).render(element)
 	</script>
 </body>
+
+<!--
+	////APUNTES
+Si quisiéramos renderizar "Hello World" podríamos hacerlo:
+UNO: 
+const rootElement = document.getElementById('root')
+const element =  React.createElement('div', {
+			className: 'container',
+			children: "Hello World"
+})
+reactDOM.render(element, rootElement)
+
+DOS:
+const element =  React.createElement('div', 
+                 {
+				   className: 'container'
+				 },
+				"Hello World" 
+				)
+
+console.log(element) //props: children: "Hello World", className: "container"				
+
+TRES: con el children como otro parameter
+const element =  React.createElement('div', 
+                 {
+				   className: 'container'
+				 },
+				"Hello", 
+				" ", 
+				"World" 
+				)
+
+console.log(element) //props: children: (3) ["Hello", ' ', "World"], className:..
+
+CUATRO
+const element =  React.createElement('div', {
+			className: 'container',
+			children: ["Hello", " ", "World"]
+})
+
+////Otro modo de realizar el ejercicio de este archivo
+El objetivo es crear lo siguiente
+
+<div class='container'>
+	<span>"Hello"</span>
+	<span>"World"</span> 
+</div>
+
+const helloElement = React.createElement('span', null, 'Hello')
+const worldElement = React.createElement('span', null, 'World')
+const element = React.createElement('div', {
+	        className: "container",
+			children: [
+				helloElement
+				' ',
+				worldElement,
+			],
+		})
+//aquí la consola me va a dar error por falta de la key prop que veremos en las otras unidades		
+o
+
+const element = React.createElement('div',
+                {
+	              className: "container",	
+		        }, 
+		           helloElement,
+		           ' ',
+		           worldElement,
+	            )
+//de este modo no me salta el problema de la key prop
+-->
