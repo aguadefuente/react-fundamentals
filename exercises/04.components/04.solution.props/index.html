@@ -11,6 +11,12 @@
 			'/': (left, right) => left / right,
 		}
 
+		// const func = (left, right) => left + right
+
+		// const func = function (l,r) {
+		//	 return l+r;
+		// }
+
 		function Calculator({ left, operator, right }) {
 			const result = operations[operator](left, right)
 			return (

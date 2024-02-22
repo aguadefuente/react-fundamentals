@@ -5,16 +5,63 @@
 	<script src="https://unpkg.com/@babel/standalone@7.23.5/babel.js"></script>
 	<script type="text/babel">
 		// 🐨 Make a function called `message` which returns the JSX we want to share
+		function message(props) {
+			return <div className="message">{props.children}</div>
+		}
+		//o con destructuring
+		/*
+		function message({ children }) {
+			return <div className="message">{children}</div>
+		}
+
+		//en mayúsculas para ser realmente tomado como un componente
+		function Message({ children }) {
+			return <div className="message">{children}</div>
+		}
+		*/
 
 		// 🐨 use that function in place of the divs below with:
 		// 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
 		const element = (
 			<div className="container">
-				<div className="message">Hello World</div>
-				<div className="message">Goodbye World</div>
+				{/*<div className="message">Hello World</div>*/}
+				{/*<div className="message">Goodbye World</div>*/}
+
+				{message({ children: 'Hello component World' })}
+				{message({ children: 'Goodbye component World' })}
+
+				{/*con jsx y en mayúsculas para que sea realmente tomado como un componente
+				<Message children="Hello component World" /> //or <Message>Hello World</Message>
+				<Message children="Goodbye component World" />
+			    */}
 			</div>
 		)
-
+		console.log(element)
 		ReactDOM.createRoot(document.getElementById('root')).render(element)
 	</script>
 </body>
+
+<!--
+	OTROS MODOS DE HACER LO MISMO
+A) Arrow function
+const message = (props) => {
+	return <div className="message">{props.children}</div>
+}
+
+B) Usando destructuring
+const message = ({children}) => {
+	return <div className="message">{children}</div>
+}
+
+In fact, we're technically not creating a custom component at all. We're just
+interpolating a function call into our template. This will have interesting
+implications in the future with react features like state and effects.
+
+Instead, let's create react elements out of this function which is what we're
+going for...
+
+message tendría que estar en mayúsculas para ser un Component propiamente
+const Message = ({children}) => {
+	return <div className="message">{children}</div>
+}
+-->

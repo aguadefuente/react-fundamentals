@@ -12,11 +12,15 @@
 		const element = (
 			<div className="container">
 				{/* 🐨 change these function calls to React.createElement API calls */}
+				{/*
 				{message({ children: 'Hello World' })}
-				{message({ children: 'Goodbye World' })}
+			    {message({ children: 'Goodbye World' })}
+		        */}
+				{React.createElement(message, { children: 'Hello raw World' })}
+				{React.createElement(message, { children: 'Goodbye raw World' })}
 			</div>
 		)
-
+		console.log(element)
 		ReactDOM.createRoot(document.getElementById('root')).render(element)
 	</script>
 </body>

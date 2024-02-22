@@ -8,7 +8,9 @@
 		const className = 'container'
 		const props = { children, className }
 		//const element = <div className={className}>{children}</div>
+		//or
 		//const element = <div className={props.className}>{props.children}</div>
+		//or
 		const element = <div {...props} />
 		ReactDOM.createRoot(document.getElementById('root')).render(element)
 	</script>
