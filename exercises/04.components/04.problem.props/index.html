@@ -5,19 +5,23 @@
 	<script src="https://unpkg.com/@babel/standalone@7.23.5/babel.js"></script>
 	<script type="text/babel">
 		const operations = {
-			'+': (left, right) => left + right,
-			'-': (left, right) => left - right,
-			'*': (left, right) => left * right,
-			'/': (left, right) => left / right,
+			'+': (x, y) => x + y,
+			'-': (x, y) => x - y,
+			'*': (x, y) => x * y,
+			'/': (x, y) => x / y,
 		}
 
 		// 🐨 accept the right props in the Calculator component here
-		function Calculator() {
+		function Calculator({ left, operator, right }) {
 			// 💰 you can get the result with: operations[operator](left, right)
+			const result = operations[operator](left, right)
 			return (
 				<div>
 					{/* 🐨 render the equation and it's result here */}
 					{/* 💰 open the final version in the app if you're unsure */}
+					<code>
+						{left} {operator} {right} = <output>{result}</output>
+					</code>
 				</div>
 			)
 		}
@@ -35,6 +39,3 @@
 		ReactDOM.createRoot(document.getElementById('root')).render(element)
 	</script>
 </body>
-
-// const func = (left, right) => left + right // const func = function (l,r) {
-// return l+r; // }

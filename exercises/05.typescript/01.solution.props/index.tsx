@@ -12,6 +12,7 @@ type CalculatorProps = {
 	operator: string
 	right: number
 }
+
 function Calculator({ left, operator, right }: CalculatorProps) {
 	// @ts-expect-error we'll fix this one later
 	const result = operations[operator](left, right)
