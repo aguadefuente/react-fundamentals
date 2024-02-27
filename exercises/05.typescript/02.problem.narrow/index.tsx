@@ -10,11 +10,11 @@ const operations = {
 type CalculatorProps = {
 	left: number
 	// 🦺 limit the operator to be only +, -, *, or /
-	operator: string
+	//operator: string
+	operator: "+" | "-" | "*" | "/"
 	right: number
 }
 function Calculator({ left, operator, right }: CalculatorProps) {
-	// @ts-expect-error 💣 when you finish, remove this comment.
 	const result = operations[operator](left, right)
 	return (
 		<div>
@@ -28,7 +28,7 @@ function Calculator({ left, operator, right }: CalculatorProps) {
 function App() {
 	return (
 		<div>
-			<h1>Calculator</h1>
+			<h1>Calculator. Narrow</h1>
 			<Calculator left={1} operator="+" right={2} />
 			<Calculator left={1} operator="-" right={2} />
 			<Calculator left={1} operator="*" right={2} />

@@ -7,10 +7,26 @@ const operations = {
 	'/': (left: number, right: number): number => left / right,
 }
 
+type eltypeof = typeof operations;
+/*
+const operations = {
+	'+': (left: number, right: number): number => left + right,
+	'-': (left: number, right: number): number => left - right,
+	'*': (left: number, right: number): number => left * right,
+	'/': (left: number, right: number): number => left / right,
+}
+*/
+type lakeyof = keyof eltypeof;
+/*
+"+", "-" "*", "/"
+*/
+
 type CalculatorProps = {
 	left: number
 	// 🐨 derive these values from the keys of the operations object
-	operator: '+' | '-' | '*' | '/'
+	//operator: '+' | '-' | '*' | '/'
+	operator: lakeyof
+	//sino tambien - operator: keyof typeof operations
 	right: number
 }
 function Calculator({ left, operator, right }: CalculatorProps) {
@@ -27,7 +43,7 @@ function Calculator({ left, operator, right }: CalculatorProps) {
 function App() {
 	return (
 		<div>
-			<h1>Calculator</h1>
+			<h1>Calculator: derive types</h1>
 			<Calculator left={1} operator="+" right={2} />
 			<Calculator left={1} operator="-" right={2} />
 			<Calculator left={1} operator="*" right={2} />
