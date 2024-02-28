@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom/client'
 function Box({
 	style = {},
 	className = '',
-	size,
+	size, 
 	...otherProps
 }: {
 	size?: 'small' | 'medium' | 'large'

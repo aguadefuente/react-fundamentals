@@ -3,15 +3,16 @@ import * as ReactDOM from 'react-dom/client'
 function Box({
 	style = {},
 	className = '',
-	// 🐨 add a size prop here
+	size, // 🐨 add a size prop here
 	...otherProps // 🦺 union this with an object that has a size prop type here which is
 	// optional and one of "small", "medium", or "large"
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: {size?: "small" | "medium" | "large"} & React.HTMLAttributes<HTMLDivElement>) {
 	// 🐨 based on the size prop, define a new variable called sizeClassName
+	const sizeClassName = size ? `box--${size}` : "" //ternary operator
 	return (
 		<div
 			// 🐨 add the sizeClassName to the className prop
-			className={`box ${className}`}
+			className={`box ${className} ${sizeClassName}`}
 			style={{ fontStyle: 'italic', ...style }}
 			{...otherProps}
 		/>
@@ -21,14 +22,15 @@ function Box({
 function App() {
 	return (
 		<div>
+			<p>size prop typescript</p>
 			{/* 🐨 update all these boxes to use the size prop */}
-			<Box className="box--small" style={{ backgroundColor: 'lightblue' }}>
-				small lightblue box
+			<Box /*className="box--small"*/ size="small" style={{ backgroundColor: 'lightblue' }}>
+				small lightblue box 
 			</Box>
-			<Box className="box--medium" style={{ backgroundColor: 'pink' }}>
+			<Box /*className="box--medium"*/ size="medium" style={{ backgroundColor: 'pink' }}>
 				medium pink box
 			</Box>
-			<Box className="box--large" style={{ backgroundColor: 'orange' }}>
+			<Box /*className="box--large"*/ size="large" style={{ backgroundColor: 'orange' }}>
 				large orange box
 			</Box>
 			<Box>sizeless colorless box</Box>
