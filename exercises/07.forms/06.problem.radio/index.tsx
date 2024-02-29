@@ -43,6 +43,18 @@ function App() {
 			</div>
 			{/* 🐨 add a fieldset with the legend "Visibility" */}
 			{/* 🐨 add two radio buttons for public/private options for the name "visibility" */}
+			<fieldset>
+				<legend>Visibility:</legend>
+				<div>
+					<input defaultChecked type="radio" value="public" name="visibility" />
+					<label>Public</label>
+				</div>
+				<div>
+					<input type="radio" value="private" name="visibility" />
+					<label>Private</label>
+				</div>
+			</fieldset>
+
 			<div>
 				<label>
 					<input name="waiver" type="checkbox" />
@@ -61,3 +73,9 @@ function App() {
 const rootEl = document.createElement('div')
 document.body.append(rootEl)
 ReactDOM.createRoot(rootEl).render(<App />)
+
+/*Nota:
+A radio group is defined by giving each of radio buttons in the 
+group the same name
+ej) name="contact" pero uno con value="public" y otro con value="private"
+*/

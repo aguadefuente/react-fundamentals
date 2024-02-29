@@ -33,14 +33,35 @@ function App() {
 			</div>
 			{/* 🐨 add a checkbox with the label "Waiver Signed" */}
 			{/* 💰 put the <input> inside the <label> */}
+			<label htmlFor="waiver">
+				Waiver Signed:
+				<input type="checkbox" id="waiver" name="waiver" />
+			</label>
 			<div>
-				<label htmlFor="startDateInput">Start Date:</label>
-				<input id="startDateInput" name="startDate" type="date" />
+				<label /*htmlFor="startDateInput"*/>Start Date:</label>
+				<input /*id="startDateInput"*/ name="startDate" type="date" />
 			</div>
 			<button type="submit">Submit</button>
 		</form>
 	)
 }
+
+/*
+Nota:
+For checkboxes, typically they appear on the left side of the 
+label and in this case we can even have the checkbox be inside 
+the label which means we don't need to worry about the for and id 
+attributes which is nice. 
+Make sure to submit the form with the checkbox checked and without 
+it checked so you can familiarize yourself with the difference in 
+form data because it's kinda funny
+- si submit con el checked veremos una key:value - waiver:"on"
+
+Nota 2:
+You may have also noticed that the `age` input is a string even 
+though its `type` attribute is `number`. It's good to understand 
+how values are submitted for different input types!
+*/
 
 const rootEl = document.createElement('div')
 document.body.append(rootEl)

@@ -12,6 +12,8 @@ function App() {
 			}}
 		>
 			{/* 🐨 add a hidden input with the name "orgId" and the value "123" */}
+			<input type="hidden" name="orgId" value="123" />
+
 			<div>
 				<label htmlFor="accountTypeSelection">Account Type:</label>
 				<select id="accountTypeSelection" name="accountType">

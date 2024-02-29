@@ -1,13 +1,22 @@
 import * as ReactDOM from 'react-dom/client'
 
+function submitHandler(event: React.FormEvent<HTMLFormElement>) {
+	event.preventDefault()
+	const formData = new FormData(event.currentTarget)
+	console.log(Object.fromEntries(formData))
+}
+
 function App() {
 	return (
 		<form
-		// 🐨 set the method to "POST"
-		// 🐨 set the encType to "multipart/form-data"
-		// 🐨 add an onSubmit handler that calls event.preventDefault()
-		// 🐨 create a FormData object from the the form (💰 event.currentTarget)
-		// 🐨 log the result of Object.fromEntries(formData)
+			// 🐨 set the method to "POST" - NOTA: por defecto es "GET", pero este hace que lo ingresemos se vea en la url. Post en cambio envía los datos al servidor y no se ve en la url, esto evita que veamos passwords e información sensible quede públicas
+			method="POST"
+			// 🐨 set the encType to "multipart/form-data" //https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/enctype
+			encType="multipart/form-data"
+			// 🐨 add an onSubmit handler that calls event.preventDefault()
+			// 🐨 create a FormData object from the the form (💰 event.currentTarget)
+			// 🐨 log the result of Object.fromEntries(formData)
+			onSubmit={submitHandler}
 		>
 			<div>
 				<label htmlFor="usernameInput">Username:</label>
