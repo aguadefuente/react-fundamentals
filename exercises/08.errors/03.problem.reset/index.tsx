@@ -103,12 +103,13 @@ function OnboardingForm() {
 
 // 🐨 accept the resetErrorBoundary prop here and call it when the user clicks
 // the "Try again" button
-function ErrorFallback({ error }: FallbackProps) {
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
 	return (
 		<div role="alert">
 			There was an error:{' '}
 			<pre style={{ color: 'red', whiteSpace: 'normal' }}>{error.message}</pre>
 			{/* 🐨 add a "Try again" button and pass the resetErrorBoundary function to the onClick prop */}
+			<button onClick={resetErrorBoundary}>Try again</button>
 		</div>
 	)
 }
