@@ -97,7 +97,7 @@ function App() {
     return <UsernameForm onSubmitUsername={onSubmitUsername}>
 }
 
-//USEREF HOOK nos devolverá un objet para acceder al valor del input
+//CON USEREF HOOK nos devolverá un objet para acceder al valor del input
 function UsernameForm({onSubmitUsername}) {
 
     /////Usamos el hook
@@ -121,5 +121,62 @@ return (
 </form>
 )
 }
+
+//VALIDATE LOWER-CASE con USESTATE HOOK
+- al componente UsernameForm le agregamos otro handle-event
+- el input será a quien se aplique este evento no al form submit,
+- por eso no necesita event.preventDefault()
+
+function UsernameForm(){
+...
+const [error, setError] = React.useState(null)
+...
+function handleChange(event){
+const {value} = event.target
+const islowerCase = value === value.toLowerCase() //esto dará true or false
+setError(isLowerCase ? null : "Username must be lower case")
+}
+
+...
+<input id="usernameInput" name="username" onChange={handleChange} /> //aplicamos el event handler
+<div style={{color: "red"}}>{error}</div> //este div se verá si tipeamos en uppercase
+<button disabled={Boolean(error)} type="submit">Submit</button> //el botón se desabilita si tipeamos en uppercase
+
+...
+}
+
+//CONTROL INPUT VALUE
+eg: 
+to set the input value explicitly when the user clicks the button or
+to change the value as the user is typing
+Uncontrolled input means that the browser mantain the state of the input
+by itself and we can be notified of changes and query from the DOM node
+
+with Controlled input we ensure that the value can't change
+we proggramatily change the input value
+En nuestro ejemplo en vez del useState {error, setError}
+
+function UsernameForm(){
+...
+const [username, setUsername] = React.useState("") //para el state de nuestro controlled input
+...
+function handleChange(event){
+const {value} = event.target
+setUsername(value.toLowerCase()) //cuando escribamos en el input aunque tipiemos en uppercase se verá en lowercase
+}
+...
+<input 
+  id="usernameInput" 
+  name="username" 
+  onChange={handleChange}
+  value={username} /> //con el value lo hacemos controlled input
+<button type="submit">Submit</button> 
+
+...
+}
+
+Nota: si al input no lo ponemos el onChange al input no podremos 
+ingresarle valores!! porque react hará que no pueda cambiar. Por eso 
+el useState y el onChange
 
 */
